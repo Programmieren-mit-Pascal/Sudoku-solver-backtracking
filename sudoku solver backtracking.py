@@ -28,16 +28,8 @@ def backtracking(sudoku):
                 return True
             
             sudoku[row][column] = 0
-    
+            
     return False
-
-
-def next_empty_field(sudoku):
-    for row in range(9):
-        for column in range(9):
-            if sudoku[row][column] == 0:
-                return (row, column)
-    return None
 
 
 def number_valid(sudoku, row, column, number):
@@ -58,23 +50,31 @@ def number_valid(sudoku, row, column, number):
         for j in range(3):
             if sudoku[box_start_row + i][box_start_column + j] == number:
                 return False
-    
+            
     return True
+
+
+def next_empty_field(sudoku):
+    for row in range(9):
+        for column in range(9):
+            if sudoku[row][column] == 0:
+                return (row, column)
+    return None
 
 
 def print_sudoku(sudoku):
     for row in range(9):
         if row % 3 == 0 and row != 0:
             print("-" * 21)
-            
+        
         for column in range(9):
             if column % 3 == 0 and column != 0:
                 print("|", end=" ")
-                
+            
             print(sudoku[row][column], end=" ")
             
         print()
-        
+    
     print()
 
 
